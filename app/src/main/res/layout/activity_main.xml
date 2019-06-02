@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
+    android:background="@drawable/back4"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.CardView
+   <!-- <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:cardMaxElevation="20dp"
-        app:cardBackgroundColor="#00c853">
+        app:cardBackgroundColor="#00c853"> -->
         <LinearLayout
+            android:layout_marginTop="80dp"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="80dp"
             android:layout_height="wrap_content">
         <TextView
             android:id="@+id/in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Internet is "
-            android:layout_marginStart="40dp"
+
             android:layout_marginLeft="1dp"
             android:textSize="35sp"
             android:textColor="#fff"
@@ -38,10 +39,10 @@
             android:textColor="#FFFFFF"
             android:layout_gravity="center"/>
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    <!-- </android.support.v7.widget.CardView> -->
 
     <android.support.v7.widget.CardView
-        android:layout_width="350dp"
+        android:layout_width="4000dp"
         android:layout_height="400dp"
         android:orientation="horizontal"
         android:layout_marginTop="200dp"
@@ -62,6 +63,7 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -97,6 +99,7 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
