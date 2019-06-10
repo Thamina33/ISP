@@ -59,7 +59,11 @@ public class SignUp extends AppCompatActivity {
 
 
 
-                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)){
+                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(confirm_pass)){
+
+
+
+                    if(pass.contains(confirm_pass)){
 
                     mauth.createUserWithEmailAndPassword(email , pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -80,6 +84,11 @@ public class SignUp extends AppCompatActivity {
                         }
                     });
 
+                    }
+
+                    else {
+                        Toast.makeText(getApplicationContext(),"Both Password Field must be same Value" , Toast.LENGTH_SHORT).show();
+                    }
 
                 }
                 else{

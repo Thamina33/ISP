@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".nottiFicationPage"></activity>
+        <activity android:name=".Profile" />
         <activity android:name=".SignUp" />
         <activity android:name=".signIn">
             <intent-filter>
@@ -23,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".WebViewActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
