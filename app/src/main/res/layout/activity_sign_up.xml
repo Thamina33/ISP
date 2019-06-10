@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/ff"
+    tools:context=".SignUp">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Welcome \nTo\nFiber Net Cumilla"
+        android:textSize="30sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="40dp"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:cardBackgroundColor="#492FC16C"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"
+        app:cardCornerRadius="1dp"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="Email"
+                android:textColorHint="#ADADAD"
+                android:background="#77027331"
+                android:layout_marginTop="40dp"
+
+                android:drawableStart="@drawable/ic_email_gray"
+                android:drawablePadding="10dp"
+                android:textSize="20sp"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+
+                android:id="@+id/pass"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="password"
+                android:textColorHint="#ADADAD"
+                android:layout_gravity="center"
+                android:background="#77027331"
+                android:textSize="20sp"
+                android:drawableStart="@drawable/ic_email_gray"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword" />
+            <EditText
+
+                android:id="@+id/con_pass"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="password"
+                android:textColorHint="#ADADAD"
+                android:layout_gravity="center"
+                android:background="#77027331"
+                android:textSize="20sp"
+                android:drawableStart="@drawable/ic_email_gray"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/signUp"
+                android:layout_marginTop="50dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:text="Sign In"
+android:textColor="#00c853"
+
+                />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="140dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:layout_marginLeft="60dp"
+            android:layout_gravity="center"
+            android:text="Already have an account" />
+
+        <TextView
+            android:textSize="25dp"
+            android:id="@+id/signIn"
+            android:textColor="#fff"
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign In" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
