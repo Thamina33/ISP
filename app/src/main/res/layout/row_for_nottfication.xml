@@ -16,6 +16,7 @@
 
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="match_parent">
@@ -37,20 +38,35 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/title_row"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:textSize="20sp"
+                        android:textColor="@color/balck"
+                        android:textStyle="bold"
                         android:layout_marginStart="5dp"
-                        android:text="internet will be delay"/>
+                        android:fontFamily="@font/hindiregular"
+                        android:text="@string/test"/>
 
                     <TextView
+                        android:id="@+id/desc_row"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="2dp"
                         android:textSize="15sp"
-                        android:layout_marginStart="5dp"
-                        android:text="internet will be delay"/>
+                        android:layout_marginStart="7dp"
+                        android:fontFamily="@font/hindiregular"
+                        android:text="@string/test"/>
+                    <TextView
+                        android:id="@+id/time_row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textSize="15sp"
+                        android:layout_marginStart="7dp"
+                        android:fontFamily="@font/hindiregular"
+                        android:text="তারিখ :"/>
 
 
                 </LinearLayout>

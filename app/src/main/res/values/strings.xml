@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fiber Net</string>
+    <string name="test">নেট এর কাজ চলবে আগামী  দুই দিন ।</string>
+    <string name="date">তারিখ :</string>
 </resources>
