@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
-    tools:context=".SignUp">
-
+    android:background="#FCFFFFFF"
+    tools:context=".ForthLoginPage">
 
 
     <ImageView
@@ -26,7 +25,6 @@
         android:gravity="center"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"
         android:textColor="#0A8C40"
         android:text="Fiber Net" />
 
@@ -36,13 +34,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:drawableLeft="@drawable/ic_email_gray"
+        android:drawablePadding="10dp"
         android:hint="Email"
         android:backgroundTint="#B7B7B7"
         android:textColorHint="#B7B7B7"
+
         android:ems="10"
-        android:drawablePadding="10dp"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:id="@+id/pass"
@@ -55,28 +54,15 @@
         android:textColorHint="#B7B7B7"
         android:ems="10"
         android:backgroundTint="#B7B7B7"
-        android:layout_marginTop="15dp"
-        android:inputType="textPassword" />
-    <EditText
-        android:id="@+id/con_pass"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:drawableLeft="@drawable/ic_email_gray"
-        android:drawablePadding="10dp"
-        android:hint="Password"
-        android:textColorHint="#B7B7B7"
-        android:ems="10"
-        android:backgroundTint="#B7B7B7"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/signUp"
+        android:id="@+id/signinbtn"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:textColor="#fff"
         android:textSize="20sp"
         android:background="@drawable/green"
@@ -108,7 +94,7 @@
             android:textColorHint="#fbfbfb"/>
 
         <TextView
-            android:id="@+id/signIn"
+            android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SIGN UP"
