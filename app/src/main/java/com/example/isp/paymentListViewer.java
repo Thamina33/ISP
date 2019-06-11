@@ -15,7 +15,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class nottiFicationPage extends AppCompatActivity {
+public class paymentListViewer extends AppCompatActivity {
 
 
     RecyclerView mrecyclerview ;
@@ -23,15 +23,16 @@ public class nottiFicationPage extends AppCompatActivity {
     LinearLayoutManager mLayoutManager; //for sorting
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
-    FirebaseRecyclerAdapter<modelForNottfication, viewholderForNottification> firebaseRecyclerAdapter ;
-    FirebaseRecyclerOptions<modelForNottfication> options ;
+    FirebaseRecyclerAdapter<modelForPaymentRow, viewhodlerForpaymentList> firebaseRecyclerAdapter ;
+    FirebaseRecyclerOptions<modelForPaymentRow> options ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notti_fication_page);
+        setContentView(R.layout.activity_payment_list_viewer);
 
-        mrecyclerview = findViewById(R.id.recyclerViewNottification) ;
+        mrecyclerview = findViewById(R.id.recylcerViewINpaymentList) ;
 
         mLayoutManager = new LinearLayoutManager(this);
         //this will load the items from bottom means newest first
@@ -41,21 +42,23 @@ public class nottiFicationPage extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("notification");
+        mRef = mFirebaseDatabase.getReference("paymentList");
         mRef.keepSynced(true);
 
-        loadData(); 
+        loadData();
+
     }
 
     private  void loadData(){
 
-        options = new FirebaseRecyclerOptions.Builder<modelForNottfication>().setQuery(mRef , modelForNottfication.class)
+        options = new FirebaseRecyclerOptions.Builder<modelForPaymentRow>().setQuery(mRef , modelForPaymentRow.class)
                 .build() ;
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<modelForNottfication, viewholderForNottification>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<modelForPaymentRow, viewhodlerForpaymentList>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final   viewholderForNottification holder, final int position, @NonNull modelForNottfication model) {
-                holder.setDataToView(getApplicationContext(), model.getTitle(), model.getDesc() , model.getDate());
+            protected void onBindViewHolder(@NonNull final   viewhodlerForpaymentList holder, final int position, @NonNull modelForPaymentRow model) {
+                holder.setDataToView(getApplicationContext(), model.getBill(), model.getName(), model.getIp() , model.getMonth() , model.getTrxID()
+                , model.getDate() , model.getStatus());
 
 
 
@@ -63,15 +66,15 @@ public class nottiFicationPage extends AppCompatActivity {
 
             @NonNull
             @Override
-            public viewholderForNottification onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+            public viewhodlerForpaymentList onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
                 //INflate the row
                 Context context;
                 View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_for_nottfication, viewGroup, false);
 
-                final viewholderForNottification viewHolder = new viewholderForNottification(itemVIew);
+                final viewhodlerForpaymentList viewHolder = new viewhodlerForpaymentList(itemVIew);
                 //itemClicklistener
-                viewHolder.setOnClickListener(new viewholderForNottification.ClickListener() {
+                viewHolder.setOnClickListener(new viewhodlerForpaymentList.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
 
@@ -92,7 +95,7 @@ public class nottiFicationPage extends AppCompatActivity {
                 return viewHolder;
             }
 
-    };
+        };
 
         mrecyclerview.setLayoutManager(mLayoutManager);
         firebaseRecyclerAdapter.startListening();

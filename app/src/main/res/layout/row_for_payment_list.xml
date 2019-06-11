@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/nameOfRow"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_height="wrap_content"
+                android:text="Name : "
+                />
+            <TextView
+                android:id="@+id/ipOfRow"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_height="wrap_content"
+                android:text="IP : "
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/billOfRow"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bill : "
+                    />
+                <TextView
+                    android:id="@+id/monthOfRow"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Month : "
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/TrxidOfRow"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_height="wrap_content"
+                android:text="Trxid : "
+                />
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/dateOfRow"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_height="wrap_content"
+                android:text="Date Of Pay : "
+                />
+
+            <TextView
+                android:id="@+id/stautsOfRow"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="75dp"
+                android:layout_height="wrap_content"
+                android:text="Stauts : "
+                />
+        </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

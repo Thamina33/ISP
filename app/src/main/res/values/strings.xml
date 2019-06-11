@@ -2,4 +2,23 @@
     <string name="app_name">Fiber Net</string>
     <string name="test">নেট এর কাজ চলবে আগামী  দুই দিন ।</string>
     <string name="date">তারিখ :</string>
+    <string name="billInstruction">১২৩৩৩৩১৩১৩ এই নাম্বারএ আপনার বিল টি পাঠান । অতঃপর TrxId  টি এই খানে লিখে "বিল পরিশোধ করুন " বাটন টিতে চাপ দিন ।</string>
+
+    <string-array name="monthList">
+        <item>মাস নির্বাচন করুন</item>
+        <item>জানুয়ারী</item>
+        <item>ফেব্রুয়ারী</item>
+        <item>মার্চ</item>
+        <item>এপ্রিল</item>
+        <item>মে</item>
+        <item>জুন</item>
+        <item>জুলাই</item>
+        <item>অগাস্ট</item>
+        <item>সেপ্টেম্বর</item>
+        <item>অক্টোবর</item>
+        <item>নভেম্বর</item>
+        <item>ডিসেম্বর</item>
+
+
+    </string-array>
 </resources>

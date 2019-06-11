@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".nottiFicationPage"></activity>
+        <activity android:name=".makePayment"></activity>
+        <activity android:name=".paymentListViewer" />
+        <activity android:name=".paymentPage" />
+        <activity android:name=".nottiFicationPage" />
         <activity android:name=".Profile" />
         <activity android:name=".SignUp" />
         <activity android:name=".signIn">

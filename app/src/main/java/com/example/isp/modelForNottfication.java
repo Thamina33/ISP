@@ -1,13 +1,13 @@
 package com.example.isp;
 
-public class model {
+public class modelForNottfication {
 
     String postId , title , desc , date ;
 
-    public model() {
+    public modelForNottfication() {
     }
 
-    public model(String postId, String title, String desc, String date) {
+    public modelForNottfication(String postId, String title, String desc, String date) {
         this.postId = postId;
         this.title = title;
         this.desc = desc;
