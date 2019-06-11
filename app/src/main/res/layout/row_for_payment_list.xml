@@ -5,11 +5,12 @@
     android:orientation="vertical">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="150dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
 
             <TextView
@@ -18,6 +19,10 @@
                 android:layout_marginStart="3dp"
                 android:layout_height="wrap_content"
                 android:text="Name : "
+                android:textColor="@color/balck"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
                 />
             <TextView
                 android:id="@+id/ipOfRow"
@@ -25,6 +30,10 @@
                 android:layout_marginStart="3dp"
                 android:layout_height="wrap_content"
                 android:text="IP : "
+                android:textColor="@color/balck"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
                 />
 
             <LinearLayout
@@ -38,6 +47,9 @@
                     android:layout_marginStart="3dp"
                     android:layout_height="wrap_content"
                     android:text="Bill : "
+                    android:textColor="@color/balck"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
                     />
                 <TextView
                     android:id="@+id/monthOfRow"
@@ -45,6 +57,9 @@
                     android:layout_marginStart="130dp"
                     android:layout_height="wrap_content"
                     android:text="Month : "
+                    android:textColor="@color/balck"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
                     />
 
             </LinearLayout>
@@ -55,6 +70,9 @@
                 android:layout_marginStart="3dp"
                 android:layout_height="wrap_content"
                 android:text="Trxid : "
+                android:textColor="@color/balck"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 />
 
 
@@ -70,6 +88,9 @@
                 android:layout_marginStart="3dp"
                 android:layout_height="wrap_content"
                 android:text="Date Of Pay : "
+                android:textColor="@color/balck"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 />
 
             <TextView
@@ -78,6 +99,9 @@
                 android:layout_marginStart="75dp"
                 android:layout_height="wrap_content"
                 android:text="Stauts : "
+                android:textColor="@color/balck"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 />
         </LinearLayout>
         </LinearLayout>

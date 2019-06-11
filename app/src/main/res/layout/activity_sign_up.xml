@@ -80,7 +80,7 @@
         android:textColor="#fff"
         android:textSize="20sp"
         android:background="@drawable/green"
-        android:text="Sign In" />
+        android:text="Sign Up" />
 
 
     <LinearLayout
