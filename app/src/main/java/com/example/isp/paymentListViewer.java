@@ -70,7 +70,7 @@ public class paymentListViewer extends AppCompatActivity {
 
                 //INflate the row
                 Context context;
-                View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_for_nottfication, viewGroup, false);
+                View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_for_payment_list, viewGroup, false);
 
                 final viewhodlerForpaymentList viewHolder = new viewhodlerForpaymentList(itemVIew);
                 //itemClicklistener

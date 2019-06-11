@@ -71,7 +71,7 @@ public class SignUp extends AppCompatActivity {
 
                             if(task.isSuccessful()){
 
-                                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                                Intent i = new Intent(getApplicationContext(), setUpProfile.class);
                                 startActivity(i);
                                 finish();
                             }

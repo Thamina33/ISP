@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
 
+        android:text="You can make Payment Here..."
         android:textColor="#00C853"
         android:textSize="25dp"
-        android:text="You can make Payment Here..."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +29,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="272dp"
+        android:layout_marginTop="184dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/white"
         android:text="Pay Bill"

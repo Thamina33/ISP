@@ -1,73 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Profile">
+    android:background="@drawable/back1"
+    tools:context=".setUpProfile">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Create Your Profile"
-    android:fontFamily="@font/sawrabi"
-    android:layout_gravity="center"
-    android:layout_marginTop="80dp"
-    android:textColor="#00C853"
-    android:textSize="25dp"/>
+    <ProgressBar
+        android:id="@+id/progressBarsetUPprofile"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/sawrabi"
+        android:text="Create Your Profile"
+        android:textColor="#00C853"
+        android:textSize="25sp" />
     <EditText
         android:layout_marginTop="100dp"
-        android:id="@+id/textView"
+        android:id="@+id/nameInRegister"
         android:layout_width="250dp"
-        android:layout_marginLeft="55dp"
-        android:textSize="20dp"
+        android:layout_marginStart="55dp"
+        android:textSize="20sp"
 
         android:layout_height="50dp"
         android:ems="10"
-        android:text="Name"
+        android:hint="Name"
         android:drawableStart="@drawable/ic_user_black"
         android:drawablePadding="10dp"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/ipInRegister"
         android:layout_width="250dp"
         android:layout_marginLeft="55dp"
         android:textSize="20dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:ems="10"
-
-        android:text="IP Address"
-        android:inputType="numberDecimal"
+        android:hint="IP Address"
+        android:inputType="numberSigned"
         android:drawableStart="@drawable/ic_add_location_black"
         android:drawablePadding="10dp"/>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/phoneInRegister"
         android:layout_width="250dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:text="Phone Number"
-        android:layout_marginLeft="55dp"
+        android:hint="Phone Number"
+        android:layout_marginStart="55dp"
         android:inputType="phone"
         android:drawableStart="@drawable/ic_call_black_24dp"
         android:drawablePadding="10dp"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/submitButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        tools:ignore="LabelFor"
-        android:importantForAutofill="no"
-        tools:targetApi="O"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:text="Submit"
+        android:clickable="true"
+        android:focusable="true"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginLeft="-15dp"
         android:textColor="#fff"
-        android:background="@drawable/white"/>
+        android:background="@color/grenn"/>
+
 
 
 </LinearLayout>

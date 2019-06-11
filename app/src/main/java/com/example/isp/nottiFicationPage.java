@@ -31,6 +31,8 @@ public class nottiFicationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notti_fication_page);
 
+        getSupportActionBar().setTitle("Notification Page");
+
         mrecyclerview = findViewById(R.id.recyclerViewNottification) ;
 
         mLayoutManager = new LinearLayoutManager(this);

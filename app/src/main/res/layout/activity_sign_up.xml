@@ -49,7 +49,7 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:drawableLeft="@drawable/ic_email_gray"
+        android:drawableStart="@drawable/pas20png"
         android:drawablePadding="10dp"
         android:hint="Password"
         android:textColorHint="#B7B7B7"
@@ -62,9 +62,9 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:drawableLeft="@drawable/ic_email_gray"
+        android:drawableLeft="@drawable/pas20png"
         android:drawablePadding="10dp"
-        android:hint="Password"
+        android:hint="Confirm Your Password"
         android:textColorHint="#B7B7B7"
         android:ems="10"
         android:backgroundTint="#B7B7B7"
@@ -90,34 +90,5 @@
         android:gravity="bottom|center"
         android:padding="10dp"
         android:layout_gravity="bottom"
-        >
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Member?"
-            android:padding="8dp"
-            android:textColor="#B7B7B7"
-            android:textSize="16sp"
-            tools:ignore="LabelFor"
-            android:importantForAutofill="no"
-            tools:targetApi="O"
-            android:layout_gravity="center|bottom"
-            android:gravity="center"
-            android:maxLines="1"
-            android:textColorHint="#fbfbfb"/>
-
-        <TextView
-            android:id="@+id/signIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SIGN UP"
-            android:textColor="#00c853"
-            android:textSize="18sp"
-            tools:ignore="LabelFor"
-            android:importantForAutofill="no"
-            tools:targetApi="O"
-            android:maxLines="1"
-            android:textColorHint="#fbfbfb"/>
-    </LinearLayout>
+        />
 </LinearLayout>
