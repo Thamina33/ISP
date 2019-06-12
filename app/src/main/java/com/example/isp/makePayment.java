@@ -1,6 +1,8 @@
 package com.example.isp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeDialogBuilder;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeSuccessDialog;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -23,11 +28,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OSPermissionSubscriptionState;
+import com.onesignal.OneSignal;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class makePayment extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -38,6 +49,7 @@ public class makePayment extends AppCompatActivity implements AdapterView.OnItem
     Button submit ;
     DatabaseReference mref , userRef  ;
     FirebaseAuth mauth ;
+String NotificationId ;
 
 
 
@@ -48,6 +60,11 @@ public class makePayment extends AppCompatActivity implements AdapterView.OnItem
 
         mauth = FirebaseAuth.getInstance();
         uid = mauth.getUid() ;
+
+        // getting notiification id l
+
+        OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
+        NotificationId = status.getSubscriptionStatus().getUserId();
 
         userRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
         mref = FirebaseDatabase.getInstance().getReference("paymentList");
@@ -135,7 +152,7 @@ public class makePayment extends AppCompatActivity implements AdapterView.OnItem
         String postid = mref.push().getKey();
 
 
-        modelForPaymentRow model = new modelForPaymentRow(postid  , uid , bill , name , ip , month , trix , Time , "Pending" ) ;
+        modelForPaymentRow model = new modelForPaymentRow(postid  , uid , bill , name , ip , month , trix , Time , "Pending" ,NotificationId ) ;
 
 
 
@@ -145,10 +162,8 @@ public class makePayment extends AppCompatActivity implements AdapterView.OnItem
 
 
                 // uploiaded
-
-                Intent o  = new Intent(getApplicationContext()   , MainActivity.class);
-                startActivity(o);
-                finish();
+                sendNotification();
+                TriggerDialogue();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -166,6 +181,40 @@ public class makePayment extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
+
+    private void TriggerDialogue() {
+
+
+        new AwesomeSuccessDialog(this)
+                .setTitle("পেমেন্সট টি ফল হয়েছে !!" )
+                .setMessage("আমরা কিছু সময়ের মাঝে আপনাকে কনফার্ম করে দেওয়া হবে")
+                .setColoredCircle(R.color.dialogSuccessBackgroundColor)
+                .setDialogIconAndColor(R.drawable.ic_dialog_info, R.color.white)
+                .setCancelable(true)
+                .setPositiveButtonText(getString(R.string.dialog_yes_button))
+                .setPositiveButtonbackgroundColor(R.color.dialogSuccessBackgroundColor)
+                .setPositiveButtonTextColor(R.color.white)
+                .setPositiveButtonClick(new Closure() {
+                    @Override
+                    public void exec() {
+                        //click
+
+                        new AwesomeSuccessDialog(getApplicationContext()).hide();
+                        Intent o = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(o);
+                        finish();
+
+                    }
+
+                })
+
+            .show();
+
+
+
+    }
+
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -180,7 +229,73 @@ public class makePayment extends AppCompatActivity implements AdapterView.OnItem
     }
 
 
+    private void sendNotification() {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8) {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+                    //    String send_email;
 
+                    //This is a Simple Logic to Send Notification different Device Programmatically....
+                    //   send_email = "admin@gmail.com";
+
+
+                    try {
+                        String jsonResponse;
+
+                        URL url = new URL("https://onesignal.com/api/v1/notifications");
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setUseCaches(false);
+                        con.setDoOutput(true);
+                        con.setDoInput(true);
+
+                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                        con.setRequestProperty("Authorization", "Basic MzdjN2Q1YjEtYjhiZC00YTg0LTg2M2QtMmQ2MGI3MzVmMjc5");
+                        con.setRequestMethod("POST");
+
+
+                        String strJsonBody = "{"
+                                + "\"app_id\": \"398ea9d8-53e3-406a-b7da-f727bc37905c\","
+                                + "\"included_segments\": [\"Admin\"],"
+                                + "\"data\": {\"foo\": \"bar\"},"
+                                + "\"contents\": {\"en\": \"New Payment Found!!\"}"
+                                + "}";
+
+
+                        System.out.println("strJsonBody:\n" + strJsonBody);
+
+                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
+                        con.setFixedLengthStreamingMode(sendBytes.length);
+
+                        OutputStream outputStream = con.getOutputStream();
+                        outputStream.write(sendBytes);
+
+                        int httpResponse = con.getResponseCode();
+                        System.out.println("httpResponse: " + httpResponse);
+
+                        if (httpResponse >= HttpURLConnection.HTTP_OK
+                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
+                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        } else {
+                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        }
+                        System.out.println("jsonResponse:\n" + jsonResponse);
+
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
 
 
 

@@ -49,17 +49,7 @@ android:background="@drawable/back2"
 
 
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="#3490dc"
-        android:layout_below="@+id/frontCard"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="ff.json"
-        app:lottie_loop="true" />
+
 
 
 

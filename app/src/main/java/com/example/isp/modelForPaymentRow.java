@@ -3,9 +3,9 @@ package com.example.isp;
 public class modelForPaymentRow {
 
 
-    String postId , uid , bill , name , ip  , month  ,trxID  , date  , status ;
+    String postId , uid , bill , name , ip  , month  ,trxID  , date  , status, userID ;
 
-    public modelForPaymentRow(String postId, String uid, String bill, String name, String ip, String month, String trxID, String date, String status) {
+    public modelForPaymentRow(String postId, String uid, String bill, String name, String ip, String month, String trxID, String date, String status, String userID) {
         this.postId = postId;
         this.uid = uid;
         this.bill = bill;
@@ -15,6 +15,7 @@ public class modelForPaymentRow {
         this.trxID = trxID;
         this.date = date;
         this.status = status;
+        this.userID = userID;
     }
 
     public String getStatus() {
@@ -23,6 +24,14 @@ public class modelForPaymentRow {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getDate() {

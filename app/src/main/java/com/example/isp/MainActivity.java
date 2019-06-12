@@ -1,5 +1,6 @@
 package com.example.isp;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.onesignal.OneSignal;
 
 public class MainActivity extends AppCompatActivity {
-
+    Dialog dialog ;
 
     CardView Ftpicon ,paymentIcon, nottificaionIcon ;
     DatabaseReference mref , userRef ;
@@ -39,7 +40,7 @@ LottieAnimationView anmiationView ;
         setContentView(R.layout.activity_main);
         mauth = FirebaseAuth.getInstance();
 
-    // startDialogue();
+  startDialogue();
 
         uid = mauth.getUid();
 
@@ -66,7 +67,7 @@ LottieAnimationView anmiationView ;
         nottificaionIcon = findViewById(R.id.nottificaionIcon);
         stat = findViewById(R.id.net_check);
         frontCard = findViewById(R.id.frontCard);
-        anmiationView = findViewById(R.id.animation);
+
 
 
 
@@ -164,10 +165,26 @@ LottieAnimationView anmiationView ;
 
     public  void  startDialogue() {
 
+         dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.custom_loading_layout);
+        dialog.setTitle("Custom Dialog");
+
+        dialog.show();
+
+
+
+
+
+
+
+
+
+
+
     }
     public  void stopDialogue (){
 
-        anmiationView.setVisibility(View.GONE);
+        dialog.dismiss();
     }
 
 
