@@ -8,7 +8,11 @@
     android:background="#fff"
 
     tools:context=".signIn">
-
+    <ProgressBar
+        android:id="@+id/progressBARSIGN"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -107,4 +111,6 @@
             android:maxLines="1"
             android:textColorHint="#fbfbfb"/>
     </LinearLayout>
+
+
 </LinearLayout>

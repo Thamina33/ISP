@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,8 +24,12 @@ public class MainActivity extends AppCompatActivity {
     CardView Ftpicon ,paymentIcon, nottificaionIcon ;
     DatabaseReference mref , userRef ;
     FirebaseAuth mauth  ;
-    String  uid , name ="null" ,ip ,State   ;
+    String  uid , name ="null" ,ip ,State = "NULL"   ;
     TextView stat ;
+CardView frontCard ;
+LottieAnimationView anmiationView ;
+
+
 
 
 
@@ -34,11 +39,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mauth = FirebaseAuth.getInstance();
 
+    // startDialogue();
+
         uid = mauth.getUid();
 
         userRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
 
         mref = FirebaseDatabase.getInstance().getReference("netState");
+
+
+
 
 
         OneSignal.startInit(this)
@@ -55,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         paymentIcon = findViewById(R.id.paymnetCARD) ;
         nottificaionIcon = findViewById(R.id.nottificaionIcon);
         stat = findViewById(R.id.net_check);
+        frontCard = findViewById(R.id.frontCard);
+        anmiationView = findViewById(R.id.animation);
+
+
 
         nottificaionIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,8 +132,22 @@ public class MainActivity extends AppCompatActivity {
 
                         State = state.getState() ;
 
+
+
+
+
+
+                        if(!state.equals("OK")){
+
+                            frontCard.setCardBackgroundColor(getResources().getColor(R.color.red));
+                        }
+
+
                         stat.setText(State);
-                        Toast.makeText(getApplicationContext() , ""+ State , Toast.LENGTH_LONG).show();
+
+                    stopDialogue();
+
+
                     }
 
                     @Override
@@ -132,6 +160,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public  void  startDialogue() {
+
+    }
+    public  void stopDialogue (){
+
+        anmiationView.setVisibility(View.GONE);
     }
 
 

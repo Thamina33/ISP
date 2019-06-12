@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,19 +23,26 @@ public class SignUp extends AppCompatActivity {
     Button signup_btn;
     TextView signIn;
     FirebaseAuth mauth;
+    ProgressBar mbar ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-
+        getSupportActionBar().setTitle("Sign Up");
         mauth = FirebaseAuth.getInstance();
 
+        mbar = findViewById(R.id.progreesbarBAR);
         signup_email= (EditText)findViewById(R.id.email);
         signup_pass = (EditText)findViewById(R.id.pass);
         signup_btn = (Button)findViewById(R.id.signUp);
         con_pass = (EditText)findViewById(R.id.con_pass);
         signIn = (TextView)findViewById(R.id.con_pass);
+
+
+        mbar.setVisibility(View.INVISIBLE);
+
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,56 +57,43 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                mbar.setVisibility(View.VISIBLE);
+                String email, pass, confirm_pass;
 
-                String email ,pass,confirm_pass;
-
-                email =signup_email.getText().toString();
+                email = signup_email.getText().toString();
                 pass = signup_pass.getText().toString();
-                confirm_pass = con_pass.getText().toString();
+               // confirm_pass = con_pass.getText().toString();
 
 
+                if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)) {
 
 
-                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(confirm_pass)){
-
-
-
-                    if(pass.contains(confirm_pass)){
-
-                    mauth.createUserWithEmailAndPassword(email , pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mauth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
-                            if(task.isSuccessful()){
+                            if (task.isSuccessful()) {
 
                                 Intent i = new Intent(getApplicationContext(), setUpProfile.class);
                                 startActivity(i);
                                 finish();
-                            }
-
-                            else{
+                            } else {
+                                mbar.setVisibility(View.INVISIBLE);
                                 String e = task.getException().getMessage();
-                                Toast.makeText(getApplicationContext(),"Error"+e, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Error" + e, Toast.LENGTH_SHORT).show();
                             }
 
                         }
                     });
 
-                    }
-
-                    else {
-                        Toast.makeText(getApplicationContext(),"Both Password Field must be same Value" , Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-                else{
-
-                    Toast.makeText(getApplicationContext(),"Please Enter Some Value" , Toast.LENGTH_SHORT).show();
+                } else {
+                    mbar.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getApplicationContext(), "Please Enter Some Value", Toast.LENGTH_SHORT).show();
 
 
                 }
-                }
 
+            }
 
         });
 

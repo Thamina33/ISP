@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,8 @@ public class signIn extends AppCompatActivity {
     TextView sign_up;
     Button login;
     FirebaseAuth mAuth;
+    ProgressBar mbar ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,9 @@ public class signIn extends AppCompatActivity {
         pass = (EditText)findViewById(R.id.pass);
         sign_up = (TextView) findViewById(R.id.signup);
         login = (Button)findViewById(R.id.signinbtn);
+        mbar = findViewById(R.id.progressBARSIGN);
+
+        mbar.setVisibility(View.INVISIBLE);
 
 
         sign_up.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +57,7 @@ public class signIn extends AppCompatActivity {
                 sign_mail = email.getText().toString();
                 sign_pass = pass.getText().toString();
 
-
+                mbar.setVisibility(View.VISIBLE);
                 if(!TextUtils.isEmpty(sign_mail)&& !TextUtils.isEmpty(sign_pass)){
 
                     mAuth.signInWithEmailAndPassword(sign_mail,sign_pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -69,6 +75,7 @@ public class signIn extends AppCompatActivity {
                             else{
                                 String error = task.getException().getMessage() ;
                                 Toast.makeText(getApplicationContext(),"Error"+error , Toast.LENGTH_SHORT).show();
+                                mbar.setVisibility(View.INVISIBLE);
                             }
 
                         }
@@ -77,8 +84,8 @@ public class signIn extends AppCompatActivity {
 
                 else{
 
-                    Toast.makeText(getApplicationContext() , "please Enter some value" , Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(getApplicationContext() , "please Enter some value !!" , Toast.LENGTH_SHORT).show();
+                    mbar.setVisibility(View.INVISIBLE);
                 }
             }
         });

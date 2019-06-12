@@ -52,13 +52,13 @@ public class viewhodlerForpaymentList extends RecyclerView.ViewHolder {
 
 
         //set data to views
-        mNameTv.setText(""+ name);
-        mIpTv.setText(""+ip);
+        mNameTv.setText("নাম :"+ name);
+        mIpTv.setText("এইপি :"+ip);
         mDate.setText("তারিখ :"+date );
-        mMontTv.setText(""+ month);
-        mBillTv.setText(""+bill);
-        mstatusTv.setText(""+status);
-        mTrxId.setText("TrxId : "+trxID);
+        mMontTv.setText("মাস :"+ month);
+        mBillTv.setText("বিল :"+bill);
+        mstatusTv.setText("Status :"+status);
+        mTrxId.setText("Trxid : "+trxID);
 
 
     }
