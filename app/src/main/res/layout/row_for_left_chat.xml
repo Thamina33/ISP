@@ -54,9 +54,9 @@
             android:id="@+id/timeTV"
             android:fontFamily="@font/hindiregular"
             android:text="9.57pm 12/5/2018"
+            android:layout_gravity="bottom"
             android:layout_marginStart="3dp"
             android:textSize="12sp"
-            android:textColor="#000"
             android:layout_marginTop="5dp"
             />
 
