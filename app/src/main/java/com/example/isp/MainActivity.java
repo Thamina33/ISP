@@ -172,15 +172,6 @@ LottieAnimationView anmiationView ;
         dialog.show();
 
 
-
-
-
-
-
-
-
-
-
     }
     public  void stopDialogue (){
 
