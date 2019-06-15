@@ -27,7 +27,7 @@ FirebaseUser firebaseUser ;
     private  static  final  int MSG_TYPE_RIGHT = 1  ;
     Context context ;
     List <modelForChat> chatList ;
-    String imageLink ;
+
 
     public AdapterChat(Context context, List<modelForChat> chatList) {
         this.context = context;

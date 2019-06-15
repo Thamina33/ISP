@@ -8,9 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,13 +19,14 @@ import com.onesignal.OneSignal;
 public class MainActivity extends AppCompatActivity {
     Dialog dialog ;
 
-    CardView Ftpicon ,paymentIcon, nottificaionIcon ;
+    CardView Ftpicon ,paymentIcon, nottificaionIcon  , helpline;
+
     DatabaseReference mref , userRef ;
     FirebaseAuth mauth  ;
-    String  uid , name ="null" ,ip ,State = "NULL"   ;
+    String  uid , name ="null" ,ip ,State = "NULL" , ftpLINK  ;
     TextView stat ;
 CardView frontCard ;
-LottieAnimationView anmiationView ;
+
 
 
 
@@ -67,6 +65,28 @@ LottieAnimationView anmiationView ;
         nottificaionIcon = findViewById(R.id.nottificaionIcon);
         stat = findViewById(R.id.net_check);
         frontCard = findViewById(R.id.frontCard);
+        helpline = findViewById(R.id.helpLineCard) ;
+
+
+        helpline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                Intent i = new Intent(getApplicationContext() , chatPage.class);
+
+                i.putExtra("NAME" , name ) ;
+                i.putExtra("IP", ip);
+
+                i.putExtra("UID", uid);
+
+
+                startActivity(i);
+
+
+            }
+        });
 
 
 
@@ -98,6 +118,8 @@ LottieAnimationView anmiationView ;
 
 
                 Intent i = new Intent(getApplicationContext() , WebViewActivity.class);
+
+                i.putExtra("LINK",ftpLINK);
                 startActivity(i);
 
 
@@ -116,7 +138,7 @@ LottieAnimationView anmiationView ;
                    name = model.getName();
                    ip = model.getIp();
 
-                   Toast.makeText(getApplicationContext() , ""+ name , Toast.LENGTH_LONG).show();
+                  // Toast.makeText(getApplicationContext() , ""+ name , Toast.LENGTH_LONG).show();
                }
 
                @Override
@@ -132,13 +154,9 @@ LottieAnimationView anmiationView ;
                         modelForState state = dataSnapshot.getValue(modelForState.class);
 
                         State = state.getState() ;
+                        ftpLINK = state.getFtpLink();
 
-
-
-
-
-
-                        if(!state.equals("OK")){
+                        if(!State.equals("OK")){
 
                             frontCard.setCardBackgroundColor(getResources().getColor(R.color.red));
                         }

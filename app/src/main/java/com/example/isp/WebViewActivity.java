@@ -1,5 +1,6 @@
 package com.example.isp;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.webkit.WebViewClient;
 public class WebViewActivity extends AppCompatActivity {
 
     WebView webView ;
+String link ;
 
 
     @Override
@@ -20,8 +22,13 @@ public class WebViewActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webviewFtp);
 
+        Intent i = getIntent();
+      link =   i.getStringExtra("LINK");
 
-        String html ="http://103.91.144.230";
+
+
+
+        String html ="http://"+link;
 
       //  webSettings.setJavaScriptEnabled(true);
         String Url = "<html> <head> <style type=text/css> iframe {height:100%;width:100%;margin:0;padding:0;overflow:scroll;} body {background-color:#000; margin:0;}</style> </head> <body> <iframe width=240px height=220px src="

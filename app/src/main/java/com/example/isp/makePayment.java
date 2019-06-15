@@ -260,7 +260,7 @@ String NotificationId ;
 
                         String strJsonBody = "{"
                                 + "\"app_id\": \"398ea9d8-53e3-406a-b7da-f727bc37905c\","
-                                + "\"included_segments\": [\"Admin\"],"
+                                + "\"included_segments\": [\"ADMIN\"],"
                                 + "\"data\": {\"foo\": \"bar\"},"
                                 + "\"contents\": {\"en\": \"New Payment Found!!\"}"
                                 + "}";

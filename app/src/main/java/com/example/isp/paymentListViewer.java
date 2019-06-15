@@ -12,13 +12,17 @@ import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class paymentListViewer extends AppCompatActivity {
 
 
     RecyclerView mrecyclerview ;
+    FirebaseAuth mauth ;
+    String uid ;
 
     LinearLayoutManager mLayoutManager; //for sorting
     FirebaseDatabase mFirebaseDatabase;
@@ -33,6 +37,9 @@ public class paymentListViewer extends AppCompatActivity {
         setContentView(R.layout.activity_payment_list_viewer);
 
         mrecyclerview = findViewById(R.id.recylcerViewINpaymentList) ;
+        mauth = FirebaseAuth.getInstance();
+        uid = mauth.getUid();
+
 
         mLayoutManager = new LinearLayoutManager(this);
         //this will load the items from bottom means newest first
@@ -51,7 +58,9 @@ public class paymentListViewer extends AppCompatActivity {
 
     private  void loadData(){
 
-        options = new FirebaseRecyclerOptions.Builder<modelForPaymentRow>().setQuery(mRef , modelForPaymentRow.class)
+        Query firebaseSearchQuery = mRef.orderByChild("uid").startAt(uid).endAt(uid + "\uf8ff");
+
+        options = new FirebaseRecyclerOptions.Builder<modelForPaymentRow>().setQuery(firebaseSearchQuery , modelForPaymentRow.class)
                 .build() ;
 
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<modelForPaymentRow, viewhodlerForpaymentList>(options) {

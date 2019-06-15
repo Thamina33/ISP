@@ -12,7 +12,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,13 +30,13 @@ public class chatPage extends AppCompatActivity {
     LinearLayoutManager mlayoutManager ;
     RecyclerView mrecyclerView ;
     FirebaseDatabase mFirebaseDatabase ;
-    DatabaseReference mRef ,  mdref ;
+    DatabaseReference mRef ,  uref ;
     FirebaseAuth mauth ;
 
     List<modelForChat> chatList ;
     AdapterChat adapterChat ;
 
-    String  uid , msg , name ,MSG  , pplink  ;
+    String  uid , msg , namee ,MSG  , pplink , ipp ;
     EditText msgINPUT ;
     ImageButton sendBTN ;
 
@@ -47,8 +50,9 @@ public class chatPage extends AppCompatActivity {
 
 
         Intent o = getIntent();
-        name = o.getStringExtra("NAME");
-        pplink = o.getStringExtra("Image");
+        namee = o.getStringExtra("NAME");
+        pplink = o.getStringExtra("UID");
+        ipp = o.getStringExtra("IP");
 
 
 
@@ -59,7 +63,8 @@ public class chatPage extends AppCompatActivity {
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("ChatSystem");
-        //    mdref = FirebaseDatabase.getInstance().getReference("NewsFeed");
+
+          uref = FirebaseDatabase.getInstance().getReference("chatNameList");
         mRef.keepSynced(true);
 
 
@@ -92,7 +97,7 @@ public class chatPage extends AppCompatActivity {
 
 
         chatList = new ArrayList<>();
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("chatsystem");
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("ChatSystem").child(uid);
         mref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -134,9 +139,9 @@ public class chatPage extends AppCompatActivity {
         if(!TextUtils.isEmpty(MSG)){
             String ts =mRef.push().getKey() ;
 
-            modelForChat uploadData = new modelForChat(uid , ts , name ,MSG , "s122" );
+            modelForChat uploadData = new modelForChat(uid , ts , namee ,MSG , "s122" );
 
-            mRef.child(ts).setValue(uploadData).addOnSuccessListener(new OnSuccessListener<Void>() {
+            mRef.child(uid).child(ts).setValue(uploadData).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
 
@@ -161,6 +166,27 @@ public class chatPage extends AppCompatActivity {
 
 
         msgINPUT.setHint("Enter the Msg");
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        modelForChatName uploadData = new modelForChatName(namee , ipp ,pplink, "" );
+        uref.child(uid).setValue(uploadData).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext() , "Something Went Wrong", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
 
 
     }
